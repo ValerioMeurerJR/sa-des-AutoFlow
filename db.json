@@ -445,13 +445,22 @@
   ],
   "ListaUsuario": [
     {
-      "id": "943b0d5a-44b9-4394-be28-0716f26d1f72",
+      "id": "6185f3b1-3fbd-4b1b-9c8e-595ca3241cf4",
       "nome": "Valerio",
-      "cpf": "123456",
+      "cpf": "08430943978",
+      "cargo": "Analista de Qualidade",
+      "login": "meurer",
+      "password": "123456",
+      "createDate": "2025-04-24T21:55:51.952Z"
+    },
+    {
+      "id": "e302f900-7f73-4cea-8051-ab2d3c6f5d2e",
+      "nome": "Gustavo",
+      "cpf": "1234564789",
       "cargo": "Produção",
-      "login": "valerio",
-      "password": "123",
-      "createDate": "2025-04-15T22:54:28.836Z"
+      "login": "gustabo",
+      "password": "123456",
+      "createDate": "2025-04-24T22:02:18.858Z"
     }
   ]
 }
