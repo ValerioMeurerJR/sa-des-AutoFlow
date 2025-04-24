@@ -1,0 +1,34 @@
+body {
+    background-color: #b7b7b7;
+    font-family: Arial, sans-serif;
+}
+
+.body-estoque h1 {
+    margin-top: 10px;
+}
+
+.body-estoque {    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 85%;
+}
+.main-estoque {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #fff;
+    width: 98%;
+}
+.main-estoque h2 {
+    margin-bottom: 20px; 
+}
+.main-estoque .form-estoque {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.lista-estoque {
+    width: 98%;
+}

@@ -1,0 +1,22 @@
+.div-Input-Custom {
+    display: flex;
+    flex-direction: column;
+    row-gap: 3px;
+    margin-bottom: 20px;
+}
+
+.div-Input-Custom input {
+    padding: 8px 16px;
+    font-size: 16px;
+    border: 1px solid #a7a6a6;
+    width: 100%;
+    height: 55px;
+    border-radius: 4px;
+}
+
+.div-Input-Custom label {
+    color: #333333;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}

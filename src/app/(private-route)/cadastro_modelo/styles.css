@@ -1,0 +1,34 @@
+body {
+    background-color: #b7b7b7;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    margin-top: 10px;
+}
+
+.body-modelos {    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 85%;
+}
+.main-modelos {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #fff;
+    width: 98%;
+}
+.main-modelos h2 {
+    margin-bottom: 20px; 
+}
+.main-modelos .form-modelos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.lista-quality {
+    width: 98%;
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>usuario</title>
+    <link href="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: url(../../assets/a.webp);
+            background-size: cover;
+        }
+
+        main {
+            background-color: dimgray;
+            width: 300px;
+            margin-left: 40%;
+            display: grid;
+            place-items: center;
+            margin-top: 16%;
+            border-radius: 16px;
+            padding: 20px;
+        }
+
+        @media (min-width: 300px) {
+            main .login {
+                width: auto;
+
+            }
+        }
+
+        form h1 {
+            color: darkblue;
+            font-size: 30px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .grupo-campos {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-right: 16px;
+        }
+
+        .grupo-campos input {
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 16px;
+            border: 1px solid #999;
+        }
+
+
+        .grupo-campos button {
+            padding: 14px;
+            border-radius: 10px;
+            border: none;
+            color: #333;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .grupo-campos button:hover {
+            background-color: lightskyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <form class="login">
+            <h1>Faça Login</h1>
+            <div class="grupo-campos">
+                <input type="text" id="user">
+                <input type="password" id="password">
+                <button id="acessar">Acessar</button>
+                <button id="cadastrar">Cadastrar</button>
+            </div>
+        </form>
+    </main>
+</body>
+
+</html>

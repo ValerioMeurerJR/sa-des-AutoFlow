@@ -1,0 +1,52 @@
+.containe-login {    
+    height: 100vh;
+    background-image: url(../../assests/background.jpg);
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-login {
+    width: 300px;
+    height: 300px;
+    display: grid;
+    place-items: center;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    background-color: #d8d8d8;
+    Opacity: 70%
+}
+
+.main-login .login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-login .login .form_inputs {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.main-login .login .form_inputs .input {
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 16px;
+    border: 1px solid #999;
+    border: none;
+}
+
+.main-login .login label {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
