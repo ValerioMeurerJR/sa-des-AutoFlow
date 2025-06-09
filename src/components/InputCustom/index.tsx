@@ -13,7 +13,6 @@ export function InputCustom({ texto, type, message, setMessage }: InputProps) {
         <div className="div-Input-Custom">
             <input
                 type={type}
-                id="input"
                 value={message}
                 onChange={(e) => { setMessage(e.target.value) }}
                 placeholder={texto}

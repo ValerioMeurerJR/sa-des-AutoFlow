@@ -21,7 +21,7 @@ export function SelectCustom({ texto, message, setMessage, option }: SelectProps
                 onChange={(e) => { setMessage(e.target.value) }}
             >
                 {
-                    option.map(value => <MenuItem value={value.id ? value.id : value.nome} key={value.nome}>{value.nome}</MenuItem>)
+                    option.map(value => <MenuItem value={value.id ? value.id : value.item} key={value.id}>{value.nome ? value.nome : value.item}</MenuItem>)
                 }
             </Select>
         </FormControl>

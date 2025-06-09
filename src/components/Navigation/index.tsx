@@ -1,15 +1,14 @@
 "use client"
-import logo from "@/assests/backgroudlogo.jpg"
+import logo from "@/assests/backgroudlogo.jpg";
 import Image from "next/image";
-import "./styles.css"
-import { CiViewList } from "react-icons/ci";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { FaCar } from "react-icons/fa";
+import { GiAutoRepair } from "react-icons/gi";
+import { GrResources } from "react-icons/gr";
 import { MdDashboard, MdHighQuality } from "react-icons/md";
 import { RiStockFill } from "react-icons/ri";
-import { FaCar, FaClipboardList } from "react-icons/fa";
-import { GrResources } from "react-icons/gr";
-import { GiAutoRepair } from "react-icons/gi";
-import Link from "next/link";
-import { usePathname } from "next/navigation"
+import "./styles.css";
 
 export function Navigation() {
     const pathName = usePathname();
@@ -41,11 +40,16 @@ export function Navigation() {
             icon: <GrResources />
         },
         {
-            label: 'Mecanica',
-            page: '/mecanica',
+            label: 'Manutenção',
+            page: '/manutencao',
             icon: <GiAutoRepair />
         }
     ]
+    const handleLogout = () => {
+        localStorage.removeItem('access_token');
+        window.location.href = '/';
+    };
+
     return (
         <aside>
             <div className="cont">
@@ -69,6 +73,9 @@ export function Navigation() {
                             </Link>
                         ))
                     }
+                    <button className="logout-button" onClick={handleLogout}>
+                        🚪 Sair
+                    </button>
                 </nav>
             </div>
         </aside>

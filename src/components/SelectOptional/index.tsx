@@ -1,10 +1,12 @@
 import { Box, Chip, FormControl, InputLabel, MenuItem, OutlinedInput, Select } from "@mui/material";
 
+
 type SelectOptional = {
     selected: string[];
     onSelect: (value: string[]) => void;
-    optionais: string[]
-}
+    optionais: Opcionais[];
+};
+
 export default function SelectOptional({ optionais, selected, onSelect }: SelectOptional) {
     const handleChange = (event: any) => {
         const {
@@ -16,27 +18,30 @@ export default function SelectOptional({ optionais, selected, onSelect }: Select
     };
 
     return (
-        <FormControl sx={{ display: 'flex', flex: 1}}>
+        <FormControl sx={{ display: 'flex', flex: 1 }}>
             <InputLabel>Selecione Opcionais</InputLabel>
             <Select
                 multiple
                 value={selected}
                 onChange={handleChange}
                 input={<OutlinedInput label="Selecione Opcionais" />}
-                renderValue={(value) => (
-                    <Box sx={{ display: 'flex', gap: 0.5 }}>
-                        {value.map((select) => (
-                            <Chip key={select} label={select} />
-                        ))}
+                renderValue={(selectedIds) => (
+                    <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap' }}>
+                        {selectedIds.map((id: string) => {
+                            const opcional = optionais.find(opt => opt.id === id);
+                            return (
+                                <Chip key={id} label={opcional ? opcional.nome : id} />
+                            );
+                        })}
                     </Box>
                 )}
             >
-                {optionais.map((name) => (
+                {optionais.map((opcional: Opcionais) => (
                     <MenuItem
-                        key={name}
-                        value={name}
+                        key={opcional.id}
+                        value={opcional.id}
                     >
-                        {name}
+                        {opcional.nome}
                     </MenuItem>
                 ))}
             </Select>

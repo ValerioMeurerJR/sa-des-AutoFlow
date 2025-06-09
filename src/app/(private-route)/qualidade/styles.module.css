@@ -31,14 +31,14 @@ body {
 .listaItens {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(130px, max-content));
-    gap: 1rem; 
+    gap: 1rem;
     justify-content: left;
     border-top: 1px solid black;
     margin-top: 10px;
     padding-top: 10px;
 }
 
-.itens {    
+.itens {
     display: flex;
     flex-direction: column;
     border: 1px solid black;

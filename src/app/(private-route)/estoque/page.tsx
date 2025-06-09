@@ -1,16 +1,16 @@
 "use client"
-import { InputCustom } from "@/components/InputCustom";
-import "./styles.css";
-import { FormEvent, useEffect, useState } from "react";
-import { SelectCustom } from "@/components/SelectCustom";
 import { ButtonCustom } from "@/components/ButtonCustom";
 import DataTable from "@/components/DataTable";
+import { InputCustom } from "@/components/InputCustom";
+import { SelectCustom } from "@/components/SelectCustom";
+import SkeletonTable from "@/components/SkeletonTable";
 import { GridColDef } from '@mui/x-data-grid';
 import axios from "axios";
-import { v4 as uuid } from "uuid";
-import SkeletonTable from "@/components/SkeletonTable";
+import { AnimatePresence, motion } from "framer-motion";
+import { FormEvent, useEffect, useState } from "react";
+import styles from './styles.module.css';
 
-const host = "http://localhost:63977"
+const host = "http://localhost:3333"
 type DataLista = {
     id: string,
     nome: string,
@@ -35,7 +35,11 @@ export default function Estoque() {
     }, []);
 
     async function loadList() {
-        const response = await axios.get(`${host}/ListaProdutos`);
+        const response = await axios.get(`${host}/products`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+            }
+        });
         const ListCompletoSort = response.data?.sort((a: any, b: any) => (
             new Date(b.createDate).getTime() - new Date(a.createDate).getTime()
         ));
@@ -58,19 +62,28 @@ export default function Estoque() {
 
     async function handleRegister(event: FormEvent) {
         event.preventDefault();
-        if (!nomeitem || !quantidadeitem || !fabricanteitem) {
+        if (!nomeitem || !quantidadeitem || !fabricanteitem || tipoitem == "") {
             alert("Preencha todos os campos!");
             return;
-        } 
-        const newProduto = {
-            "id": uuid(),
-            "nome": nomeitem,
-            "quantidade": quantidadeitem,
-            "fabricante": fabricanteitem,
-            "tipo": tipoitem,
-            "createDate": new Date().toISOString()
         }
-        await axios.post(`${host}/ListaProdutos`, newProduto);
+        const newProduto = {
+            "nome": nomeitem,
+            "quantidade": Number(quantidadeitem),
+            "fabricante": fabricanteitem,
+            "tipo": tipoitem
+        }
+        console.log(newProduto)
+        await axios.post(`${host}/product`,
+            newProduto, // esse é o corpo da requisição
+            {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+                }
+            }
+        );
+
+
+
         console.log("Produto registrado:", { nomeitem, quantidadeitem, fabricanteitem, tipoitem });
         setFabricanteitem("")
         setNomeitem("")
@@ -79,30 +92,36 @@ export default function Estoque() {
 
     }
 
+
     return (
-        <div className="body-estoque">
+        <div className={styles.bodyEstoque}>
             <h1>Estoque</h1>
-            <main className="main-estoque">
+            <main className={styles.mainEstoque}>
                 <h2>Cadastro novo produto</h2>
-                <form className="form-estoque">
+                <form className={styles.formEstoque}>
                     <InputCustom texto="Nome" type="text" message={nomeitem} setMessage={setNomeitem} />
-                    <InputCustom texto="Quantidade" type="text" message={quantidadeitem} setMessage={setQuantidadeitem} />
+                    <InputCustom texto="Quantidade" type="number" message={quantidadeitem} setMessage={setQuantidadeitem} />
                     <InputCustom texto="Fabricante" type="text" message={fabricanteitem} setMessage={setFabricanteitem} />
                     <SelectCustom texto="Tipo de Produto" message={tipoitem} setMessage={setTipoitem} option={opcoes} />
-                    <div className="div-button-estoque">
+                    <div className={styles.divButtonEstoque}>
                         <ButtonCustom onClick={handleRegister} texto="Registrar Produto" />
                     </div>
                 </form>
             </main>
-            <div className="lista-estoque">
-                {loading ? (
-                    <SkeletonTable width={100} />
-                ) : listaItem.length > 0 ? (
-                    <DataTable columns={columns} dataLista={listaItem} paginationModel={paginationModel} />
-                ) : (
-                    <p>Nenhum dado encontrado.</p>
-                )}
-            </div>
+            <AnimatePresence>
+                <div className={styles.listaEstoque}>
+                    <motion.div>
+                        {loading ? (
+                            <SkeletonTable width={100} />
+                        ) : listaItem.length > 0 ? (
+                            <DataTable columns={columns} dataLista={listaItem} paginationModel={paginationModel} />
+                        ) : (
+                            <p>Nenhum dado encontrado.</p>
+                        )}
+                    </motion.div>
+                </div>
+            </AnimatePresence>
         </div>
     );
+
 }

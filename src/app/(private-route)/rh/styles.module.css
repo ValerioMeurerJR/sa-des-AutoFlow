@@ -3,32 +3,35 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.body-estoque h1 {
+.body h1 {
     margin-top: 10px;
 }
 
-.body-estoque {    
+.body {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 85%;
 }
-.main-estoque {
+
+.main {
     margin-top: 20px;
     margin-bottom: 20px;
     padding: 20px;
     background-color: #fff;
     width: 98%;
 }
-.main-estoque h2 {
-    margin-bottom: 20px; 
+
+.main h2 {
+    margin-bottom: 20px;
 }
-.main-estoque .form-estoque {
+
+.main .form {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
 }
 
-.lista-estoque {
+.listaQuality {
     width: 98%;
 }

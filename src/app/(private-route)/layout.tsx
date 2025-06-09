@@ -1,9 +1,11 @@
 import { Navigation } from "@/components/Navigation";
-import "./styles.css"
-export default function PrivateLayout({ children }: { children: React.ReactNode }) {
+import ProtectedPage from "@/components/ProtectedPage";
+import "./styles.css";
+export default async function PrivateLayout({ children }: { children: React.ReactNode }) {
     return (
         <div className="layout">
             <Navigation />
+            <ProtectedPage />
             {children}
         </div>
     )
